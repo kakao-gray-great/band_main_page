@@ -309,6 +309,121 @@ body {
     font-size: 0.9rem;
 }
 
+/* 플레이리스트 섹션 */
+.playlist-section {
+    background: var(--dark-bg);
+    overflow: hidden;
+}
+
+.playlist-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.song-tile {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.song-tile h3 {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.song-tile::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.song-tile:hover::before {
+    opacity: 0.3;
+}
+
+.song-tile:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+/* 타일별 개별 스타일링 - 4x2 레이아웃 */
+.tile-1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.tile-2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.tile-3 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.tile-4 {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.tile-5 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.tile-6 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.tile-7 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.tile-8 {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+@media (max-width: 768px) {
+    .playlist-mosaic {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 1rem;
+    }
+    
+    .tile-1, .tile-2, .tile-3, .tile-4, .tile-5, .tile-6, .tile-7, .tile-8 {
+        grid-column: auto;
+        grid-row: auto;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .playlist-mosaic {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* 오시는 길 섹션 */
 .location-section {
     background: var(--light-bg);
